@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/userScreen">
+
+    <fragment android:id="@+id/userScreen"
+              android:name="com.example.gitbook.ui.userslist.fragments.UsersFragment"
+              android:label="Git User List"
+              tools:layout="@layout/user_listing_layout">
+        <action
+            android:id="@+id/action_userScreen_to_reposFragment"
+            app:destination="@id/repoScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/repoScreen"
+        android:name="com.example.gitbook.ui.userslist.fragments.ReposFragment"
+        android:label="ReposFragment"
+        tools:layout="@layout/user_listing_layout">
+
+        <argument
+            android:name="username"
+            app:argType="string"
+            android:defaultValue="mojombo"/>
+        <action
+            android:id="@+id/action_repoScreen_to_repoDetailFragment"
+            app:destination="@id/repoDetailScreen" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/repoDetailScreen"
+        android:name="com.example.gitbook.ui.userslist.fragments.RepoDetailFragment"
+        android:label="RepoDetailFragment"
+        tools:layout="@layout/user_listing_layout">
+
+        <argument
+            android:name="username"
+            app:argType="string"
+            android:defaultValue="mojombo"/>
+
+        <argument
+            android:name="reponame"
+            app:argType="string"
+            android:defaultValue="asteroids"/>
+
+    </fragment>
+
+</navigation>
